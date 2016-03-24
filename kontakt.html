@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kontakt</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <div class="logo">101
+        <div class="logo-text">Tech Shop</div>
+    </div>
+    <ul class="flex-container wrap">
+        <li class="flex-item">
+            <a href="index.html">
+                <button class="button">Naslovna </button>
+            </a>
+        </li>
+        <li class="flex-item">
+            <a href="katalog.html">
+                <button class="button">Katalog </button>
+            </a>
+        </li>
+        <li class="flex-item">
+            <a href="kontakt.html">
+                <button class="button">Kontakt </button>
+            </a>
+        </li>
+        <li class="flex-item">
+            <a href="onama.html">
+                <button class="button">O nama </button>
+            </a>
+        </li>
+        <li class="dokraja"></li>
+    </ul>
+
+
+    <h1 class="center">Podrška kupcima - Kontaktirajte nas</h1>
+    <h4 class="center">Za pitanja vezana uz narudžbe ili za ostale informacije o našim proizvodima.</h4>
+
+
+    <form id="forma">
+        <div class="naslov-forma">POŠALJI PORUKU </div>
+        <label for="zaglavlje">Zaglavlje predmeta:</label>
+        <select class="">
+            <option value="" selected="selected"></option>
+            <option value="1">Prodaja</option>
+            <option value="2">Žalbe i pohvale</option>
+        </select>
+        <input placeholder="Ime" type="text" id="ime" />
+        <input placeholder="Prezime" type="text" id="prezime" />
+        <input placeholder="E-mail" type="text" id="email" />
+        <input placeholder="Referenca narudžbe" type="text" id="referenca" />
+        <label for="file">Dodaj prilog:</label>
+        <input type="file" id="file">
+        <label for="poruka">Poruka:</label>
+        <textarea id="poruka"></textarea>
+        <button type="submit" class="gumb-centar">Pošalji</button>
+
+    </form>
+
+</body>
+
+</html>
