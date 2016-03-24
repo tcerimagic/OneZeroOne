@@ -234,12 +234,12 @@ form, .linkovi {
 .naslov-forma
 {
     width: 100%; 
-    border-radius: 2px; 
+    border-radius: 6px; 
     padding: 14px;
     margin-left: -14px;
     margin-top: -14px;
     text-align: center;
-    background-color: #423C3C;
+    background-color: #E01A00;
     position: relative;
     font-size: 20px;
    color: white;
