@@ -33,7 +33,7 @@ function dummyPodaci() {
     novosti[0].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[0].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
-    trenutnoVrijeme.skiniSekunde(50);
+    trenutnoVrijeme.skiniSekunde(70);
     novosti[1].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[1].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
@@ -140,9 +140,9 @@ function postaviVrijemeObjave(ob) {
 
     //ista godina, mjesec, dan
 
-    else if (rez == 0 && rezSati >=1 && ob.getHours() <= danas.getHours()) {
-        razlikaUSatima = danas.getHours() - ob.getHours();
-
+    else if (rez == 0 && rezSati >=1) {
+        var razlikaUSatima = danas.getHours() - ob.getHours();
+        razlikaUSatima = Math.abs(razlikaUSatima);
         if (razlikaUSatima == 1 || razlikaUSatima % 10 == 1) {
             return "prije " + razlikaUSatima + " sat.";
         }
@@ -158,7 +158,7 @@ function postaviVrijemeObjave(ob) {
 
     //ista godina, mjesec, unutar 7 dana
 
-    else if (rez <= 7) {
+    else if (rez >0 && rez <= 7) {
 
         if (rez == 1) {
             return "prije " + rez + " dan.";
