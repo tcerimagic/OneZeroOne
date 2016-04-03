@@ -4,7 +4,7 @@ window.onload = function() {
     var objave = document.getElementsByClassName("objava");
     for (var i = 0; i < objave.length; i++) {
         var ocitajDatum = new Date(objave[i].innerHTML);
-        objave[i].innerHTML = "Novost objavljena prije " + postaviVrijemeObjave(ocitajDatum);
+        objave[i].innerHTML = "Novost objavljena " + postaviVrijemeObjave(ocitajDatum);
     };
 }
 
@@ -37,7 +37,7 @@ function dummyPodaci() {
     novosti[1].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[1].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
-    trenutnoVrijeme.skiniMinute(5);
+    trenutnoVrijeme.skiniMinute(3);
     novosti[2].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[2].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
@@ -73,7 +73,7 @@ function dummyPodaci() {
     novosti[10].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[10].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
-    trenutnoVrijeme.skiniDane(2);
+    trenutnoVrijeme.skiniDane(105);
     novosti[11].getElementsByClassName('objava')[0].innerHTML = trenutnoVrijeme;
     novosti[11].getElementsByClassName('objavaSpas')[0].innerHTML = trenutnoVrijeme;
 
@@ -82,6 +82,14 @@ function dummyPodaci() {
 
 function razlikaDani(first, second) {
     return Math.round((second - first) / (1000 * 60 * 60 * 24));
+}
+
+function razlikaSati(first, second) {
+    return Math.round(((second - first) % 86400000) / 3600000);
+}
+
+function razlikaMinute(first, second) {
+    return Math.round((((second - first) % 86400000) % 3600000) / 60000);
 }
 function parseDate(str) {
     var mdy = str.split('-')
@@ -95,7 +103,10 @@ function postaviVrijemeObjave(ob) {
     var vrijemeObjave = parseDate(ob.toISOString().substring(0, 10));
 
     var rez = razlikaDani(vrijemeObjave, trenutnoVrijeme);
-
+    var rezSati = razlikaSati(ob, danas);
+    var rezMinute = razlikaMinute(ob, danas);
+    
+    
     //da li je uopste ista 
 
     if (vrijemeObjave.getFullYear() != trenutnoVrijeme.getFullYear() && rez > 31) {
@@ -107,40 +118,41 @@ function postaviVrijemeObjave(ob) {
     }
 
     //ista godina,mjesec, dan, sat, minuta
-    if (rez == 0 && ob.getHours() == danas.getHours() && ob.getMinutes() == danas.getMinutes()
-        && ob.getSeconds() <= danas.getSeconds()) {
-        return "par sekundi."
+    /*if (rez == 0 && ob.getHours() == danas.getHours() && ob.getMinutes() == danas.getMinutes() && ob.getSeconds() <= danas.getSeconds()) */
+    if (rez == 0 && rezMinute == 0 && rezSati == 0) {
+        return "prije par sekundi."
     }
 
     //ista godina, mjesec, dan, sat
-    else if (rez == 0 && ob.getHours() == danas.getHours() && ob.getMinutes() <= danas.getMinutes()) {
+    //else if (rez == 0 && ob.getHours() == danas.getHours() && ob.getMinutes() <= danas.getMinutes()) {
+    else if(rez== 0 && rezMinute < 60 && rezSati == 0){
         var razlikaUMinutama = danas.getMinutes() - ob.getMinutes();
 
         if (razlikaUMinutama == 1 || razlikaUMinutama % 10 == 1) {
-            return razlikaUMinutama + " minutu.";
+            return "prije " + razlikaUMinutama + " minutu.";
         }
         if (razlikaUMinutama == 2 || razlikaUMinutama == 3 || razlikaUMinutama == 4 ||
             razlikaUMinutama % 10 == 2 || razlikaUMinutama % 10 == 3 || razlikaUMinutama % 10 == 4) {
-            return razlikaUMinutama + " minute.";
+            return "prije " + razlikaUMinutama + " minute.";
         }
-        return razlikaUMinutama + " minuta.";
+        return "prije " + razlikaUMinutama + " minuta.";
     }
 
     //ista godina, mjesec, dan
 
-    else if (rez == 0 && ob.getHours() <= danas.getHours()) {
+    else if (rez == 0 && rezSati >=1 && ob.getHours() <= danas.getHours()) {
         razlikaUSatima = danas.getHours() - ob.getHours();
 
         if (razlikaUSatima == 1 || razlikaUSatima % 10 == 1) {
-            return razlikaUSatima + " sat.";
+            return "prije " + razlikaUSatima + " sat.";
         }
 
         if (razlikaUSatima == 2 || razlikaUSatima == 3 || razlikaUSatima == 4 ||
             razlikaUSatima % 10 == 2 || razlikaUSatima % 10 == 3 || razlikaUSatima % 10 == 4) {
-            return razlikaUSatima + " sata.";
+            return "prije " + razlikaUSatima + " sata.";
         }
 
-        return razlikaUSatima + " sati.";
+        return "prije " + razlikaUSatima + " sati.";
 
     }
 
@@ -149,10 +161,10 @@ function postaviVrijemeObjave(ob) {
     else if (rez <= 7) {
 
         if (rez == 1) {
-            return rez + " dan.";
+            return "prije " + rez + " dan.";
         }
 
-        return rez + " dana.";
+        return "prije " + rez + " dana.";
     }
 
 
@@ -162,9 +174,9 @@ function postaviVrijemeObjave(ob) {
         var razlikaUSedmicama = Math.round(rez / 7);
 
         if (razlikaUSedmicama == 1) {
-            return razlikaUSedmicama + " sedmicu.";
+            return "prije " + razlikaUSedmicama + " sedmicu.";
         }
-        return razlikaUSedmicama + " sedmice.";
+        return "prije " + razlikaUSedmicama + " sedmice.";
     }
 
 }

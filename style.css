@@ -128,9 +128,10 @@
 
 .objava
 {
-    float: left;
-    margin-top: 15px;
+    margin-top: 16px;
+    float: right;
     font-weight: bold;
+    color: lightgrey;
 }
 .one
 {
