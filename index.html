@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Naslovnica</title>
-
+    <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+  
 </head>
 
 <body>
+      
     <div class="logo">101
         <div class="logo-text">Tech Shop</div>
     </div>
@@ -34,49 +36,134 @@
         <li class="first-column"></li>
     </ul>
     <div class="heading">Iz ponude izdvajamo</div>
+    <select id="filter" onchange="filtrirajProizvode()">
+						  <option value="sve">Prikazi sve</option>
+						  <option value="danas">Danasnje</option>
+						  <option value="sedmica">Sedmicne</option>
+						  <option value="mjesec">Mjesecne</option>
+						</select>
     <ul class="flex-container-posts wrap">
         <li class="news">
             <div class="one"></div>
             <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
                 neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
-                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst
-                bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla
-                blaOvo je neki tekst bla bla
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
 
             </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
         </li>
 
         <li class="news">
             <div class="one"></div>
             <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
                 neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
-                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst
-                bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla
-                blaOvo je neki tekst bla bla
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
 
             </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
         </li>
         <li class="news">
             <div class="one"></div>
             <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
                 neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
-                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst
-                bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla
-                blaOvo je neki tekst bla bla
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
 
             </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
         </li>
         <li class="news">
             <div class="one"></div>
             <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
                 neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
-                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst
-                bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla
-                blaOvo je neki tekst bla bla
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
 
             </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
         </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
 
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas"></div>
+        </li>
+        <li class="news">
+            <div class="one"></div>
+            <div>Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je
+                neki tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla Ovo je neki
+                tekst bla blaOvo je neki tekst bla bla Ovo je neki tekst bla blaOvo je neki tekst bla bla 
+
+            </div>
+            <div class="objava">sdadas</div>
+            <div class="objavaSpas" ></div>
+        </li>
     </ul>
 
 </body>

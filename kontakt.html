@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Kontakt</title>
-<link rel="stylesheet" href="style.css">
-<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/validacijeScript.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -40,15 +42,15 @@
             <option value="2">Prodaja</option>
             <option value="3">Žalbe i pohvale</option>
         </select>
-        <input placeholder="Ime" type="text" id="ime" />
-        <input placeholder="Prezime" type="text" id="prezime" />
-        <input placeholder="E-mail" type="text" id="email" />
-        <input placeholder="Referenca narudžbe" type="text" id="referenca" />
+        <input placeholder="Ime" type="text" id="ime" onkeyup="validirajTekst(this)">
+        <input placeholder="Prezime" type="text" id="prezime" onkeyup="validirajTekst(this)" >
+        <input placeholder="E-mail" type="text" id="email" onkeyup="validirajEmail(this)" required >
+        <input placeholder="Referenca narudžbe" type="text" id="referenca" onkeyup="validirajTekst(this)" required>
         <label for="file">Dodaj prilog:</label>
         <input type="file" id="file">
         <label for="poruka">Poruka:</label>
-        <textarea id="poruka"></textarea>
-        <button type="submit" class="gumb-centar">Pošalji</button>
+        <textarea id="poruka" required></textarea>
+        <button type="submit" onclick="validirajFormu()" class="gumb-centar" id="salji">Pošalji</button>
 
     </form>
 
