@@ -12,7 +12,7 @@
     text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     
 }
-.logo-text
+.logo-text, #loginInfo
 {
     margin: 5px;
     font: 'Merienda One', Helvetica, sans-serif;
@@ -86,7 +86,6 @@
     
     
     
-    
 }
 
 .banner
@@ -108,6 +107,7 @@
     margin: inherit;
     margin-left: 10px;
     margin-right: 10px;
+   
     width: 430px;
     height: 260px;
     background-repeat: no-repeat;
@@ -124,8 +124,6 @@
     display: inline-block;
     border: 2px solid #E01A00;
     border-radius: 10px;
-    min-height: 240px;
-    
 }
 
 .objava
@@ -410,5 +408,13 @@ textarea {
 #naslovNovosti{
     font-size: x-large;
     color: #E01A00;
+}
+
+#loginInfo{
+    font-size:large;
+    color: #E01A00;
+    margin-left: 10%;
+    margin-top: 3%;
+
 }
 

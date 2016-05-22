@@ -92,13 +92,28 @@ else {
         
         
         
-        ?>
+    ?>
 
 
     <div class="logo">
         101
         <div class="logo-text">Tech Shop</div>
     </div>
+
+    <?php
+    if(isset($_SESSION['loginSession'])){
+
+        echo '<div id="loginInfo">Logovani ste kao '.$_SESSION['loginSession'].'.</div>';
+
+    }
+    else{
+        echo '<div id="loginInfo">Niste logovani</div>';
+
+    }
+
+
+    ?>
+
     <ul class="flex-container wrap">
         <li class="flex-item">
             <a href="index.php" class="button">Naslovna</a>
