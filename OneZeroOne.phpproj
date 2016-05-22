@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>OneZeroOne</Name>
+    <ProjectGuid>{ebda9874-de0e-4fc2-943b-ba14dcb7f9c4}</ProjectGuid>
+    <RootNamespace>
+    </RootNamespace>
+    <OutputType>Library</OutputType>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="loginPage.php" />
+    <Compile Include="novosti.php" />
+    <Compile Include="scripts\script.js" />
+    <Compile Include="scripts\validacijeScript.js" />
+    <Compile Include="slike\facebook.png" />
+    <Compile Include="slike\img1.jpg" />
+    <Compile Include="slike\lenovo.jpg" />
+    <Compile Include="slike\profil.jpg" />
+    <Compile Include="slike\sony.png" />
+    <Compile Include="slike\twitter.png" />
+    <Compile Include="slike\youtube.jpg" />
+    <Compile Include="slike\youtube.png" />
+    <Compile Include="index.php" />
+    <Compile Include="katalog.php" />
+    <Compile Include="kontakt.php" />
+    <Compile Include="onama.php" />
+    <Compile Include="style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="slikeNovosti\" />
+    <Folder Include="scripts" />
+    <Folder Include="slike" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\loginData.txt" />
+    <Content Include="data\novostiData.csv" />
+    <Content Include="scripts\ajax.js" />
+  </ItemGroup>
+</Project>

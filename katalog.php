@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+<?php
+if(isset($_REQUEST['logoutBtn'])){
+
+    session_start();
+    unset($_SESSION['loginSession']);
+}
+else {
+    session_start();
+
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,17 +26,37 @@
     </div>
     <ul class="flex-container wrap">
         <li class="flex-item">
-            <a href="index.html" class="button">Naslovna</a>
+            <a href="index.php" class="button">Naslovna</a>
         </li>
         <li class="flex-item">
-            <a href="katalog.html" class="button">Katalog</a>
+            <a href="katalog.php" class="button">Katalog</a>
         </li>
         <li class="flex-item">
-            <a href="kontakt.html" class="button">Kontakt</a>
+            <a href="kontakt.php" class="button">Kontakt</a>
         </li>
         <li class="flex-item">
-            <a href="onama.html" class="button">O nama</a>
+            <a href="onama.php" class="button">O nama</a>
         </li>
+        <?php
+        if(isset($_SESSION['loginSession'])){
+
+            print('
+        <li class="flex-item">
+            <a href="novosti.php" class="button">Dodaj novost</a>
+        </li>
+        <li class="flex-item">
+            <a href="index.php?logoutBtn=true" class="button">Logout</a>
+        </li>');
+        }
+        else{
+            print('<li class="flex-item">
+            <a href="loginPage.php" class="button" name="loginBtn">Login</a>
+        </li>');
+        }
+
+
+
+        ?>
         <li class="dokraja"></li>
     </ul>
 

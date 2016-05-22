@@ -1,8 +1,10 @@
 window.onload = function() {
-    dummyPodaci();
+  //  dummyPodaci();
 
     var objave = document.getElementsByClassName("objava");
+
     for (var i = 0; i < objave.length; i++) {
+
         var ocitajDatum = new Date(objave[i].innerHTML);
         objave[i].innerHTML = "Novost objavljena " + postaviVrijemeObjave(ocitajDatum);
     };
