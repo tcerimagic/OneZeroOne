@@ -191,7 +191,7 @@ else {
                 echo '<br/><br/><li class="onama-wrap odgovori-wrap">
 
 <form id="komentariForm" method="post" action="#">
-                 <textarea id="odgovor" name="odgovor" required></textarea>
+                 <textarea id="odgovor" class="textareaKomentar" name="odgovor" required></textarea>
                   <button type="submit" class="gumb-centar" id="odgovoriBtn" name="odgovoriBtn" value="'.$idKomentara.'">Odgovori</button>
                  </form>
 
@@ -211,7 +211,7 @@ else {
                      echo '<li class="onama-wrap komentari-wrap komentar-forma">
                  <form id="komentariForm" method="post" action="#">
                     
-                  <textarea id="komentar" name="komentar" required></textarea>
+                  <textarea id="komentar" class="textareaKomentar"  name="komentar" required></textarea>
 
                   <button type="submit" class="gumb-centar" id="komentarisiBtn" 
                                 name="komentarisiBtn" value=" ">Pošalji</button>

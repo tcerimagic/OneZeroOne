@@ -35,6 +35,9 @@
             $_SESSION['loginSession'] = $username;
 
             }
+            else {
+                echo "<div id='obavjestenje2'>Neispravni login podaci.</div>";
+            }
            
             
             }

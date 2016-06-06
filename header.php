@@ -1,4 +1,4 @@
-<div class="logo">101
+﻿<div class="logo">101
         <div class="logo-text">Tech Shop</div>
     </div>
 
@@ -7,9 +7,9 @@
 
     if(isset($_SESSION['loginSession'])){
 
-        echo '<div id="loginInfo">Logovani ste kao: '.$_SESSION['loginSession'].'.</div>';
-        echo '<div id="loginInfo">Novih komentara: <span id="notifikacije"></span></div>';
-        echo '<div id="loginInfo"><a href="password.php">Promijeni password</a></div>';
+        echo '<div id="loginInfo">Logovani ste kao: '.$_SESSION['loginSession'].' 
+<br/><br/>Broj nepročitanih komentara: <span id="notifikacije"></span></div>';
+   //     echo '<div id="loginInfo"></div>';
 
     }
     else{
@@ -48,6 +48,11 @@
                     <a href="autori.php" class="button">Autori</a>
                </li>');
         }
+
+        print('<li class="flex-item">
+        <a href="password.php" class="button">Promijeni šifru</a>
+         </li>');
+
         print('<li class="flex-item">
                     <a href="index.php?logoutBtn=true" class="button">Logout</a>
                 </li>');

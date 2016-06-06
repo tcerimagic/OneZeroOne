@@ -118,7 +118,7 @@
 {
     margin: inherit;
     width: 417px;
-    min-height: 340px;
+    min-height: 300px;
     height:auto;
     margin-left: 10px;
     margin-right: 10px;
@@ -140,8 +140,12 @@
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
-    width: 240px;
-    height: 60%;
+    width: 50%;
+    height: auto;
+    min-height: 180px;
+    max-height: 180px;
+    padding:3px;
+    margin:3px;
     
 }
 
@@ -309,7 +313,10 @@ textarea {
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
-    margin-bottom: -30px;
+    background-size: cover;
+    background-position: center;
+    margin: 0.5em;
+
     
 }
 .onama-wrap
@@ -327,7 +334,7 @@ textarea {
     padding: 2%;
 }
 .komentari-wrap{
-    background-color: lightyellow;
+    background-color: whitesmoke;
     width: 100%;
 }
 .komentar-forma{
@@ -337,7 +344,7 @@ textarea {
 }
 
 .odgovori-wrap{
-    background-color:antiquewhite;
+    background-color: seashell;
     width: 90%;
 }
 
@@ -450,4 +457,14 @@ textarea {
 
 #komentariForm{
     all:initial;
+
+}
+#komentariForm>button{
+    float: left;
+    margin: 10px;
+}
+.textareaKomentar {
+    float: left;
+    height: 60%;
+    width: 80%;
 }

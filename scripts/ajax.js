@@ -92,7 +92,7 @@ function provjeri(username) {
                     notifikacije.style.color = "red";
                 }
                 else {
-                    notifikacije.style.color = "blue";
+                    notifikacije.style.color = "gray";
 
 
                 }

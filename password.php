@@ -62,12 +62,12 @@ session_start();
         echo '<form id="forma" method="post" action="password.php" >
         <div class="naslov-forma">PROMJENA PASSWORDA</div>
 
-        <input placeholder="Stari password" type="password" id="stariPass" name="stariPass">
+        <input placeholder="Stari password" type="password" id="stariPass" name="stariPass" required>
 
-        <input placeholder="Novi password" type="password" id="noviPass" name="noviPass" >
-        <input placeholder="Ponovite novi password" type="password" id="ponovniPass" onblur="provjeriNove()" name="ponovniPass" >
+        <input placeholder="Novi password" type="password" id="noviPass" name="noviPass" onblur="provjeriNove()" required >
+        <input placeholder="Ponovite novi password" type="password" id="ponovniPass" onblur="provjeriNove()" name="ponovniPass" required >
         <label id="labelaGreske"></label><br/>
-        <button type="submit" class="gumb-centar" id="loginBtn" name="loginBtn" >Potvrdi</button>
+        <button type="submit" class="gumb-centar" id="loginBtn" name="loginBtn" onsubmit="provjeriNove()" >Potvrdi</button>
     </form>';
     }
 
