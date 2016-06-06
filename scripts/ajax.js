@@ -63,3 +63,43 @@ function provjeriKod() {
     }
 
 }
+
+
+function provjeriNotifikacije(username) {
+
+    var pokreni = setInterval(function () { provjeri(username) }, 1200);
+}
+
+function provjeri(username) {
+
+
+    if (httpReq.readyState == 0 || httpReq.readyState == 4) {
+
+
+        httpReq.open("GET", "brojNotifikacija.php?username=" + username, true);
+
+        httpReq.onreadystatechange = function () {
+            if (httpReq.readyState == 4 && httpReq.status == 200) {
+
+                var notifikacije = document.getElementById("notifikacije");
+
+                var brojNovih = httpReq.responseText;
+
+                notifikacije.innerHTML = brojNovih;
+
+                if (brojNovih != 0) {
+
+                    notifikacije.style.color = "red";
+                }
+                else {
+                    notifikacije.style.color = "blue";
+
+
+                }
+            }
+        }
+        httpReq.send();
+
+    }
+}
+

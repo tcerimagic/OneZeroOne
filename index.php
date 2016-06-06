@@ -11,139 +11,90 @@ else {
 
 ?><!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Naslovnica</title>
     <script src="scripts/script.js"></script>
+    <script type="text/javascript" src="scripts/ajax.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
-  
+
 </head>
 
-<body>
+<?php
+require 'bodyTag.php';
 
+ include 'header.php';
+          if(isset($_REQUEST['delete']) and !empty($_REQUEST['delete']) and $_SESSION['loginSession'] == 'admin') {
+              $idDel = $_REQUEST['delete'];
+              require_once 'baza.php';
+              $dajSliku = $baza->prepare("select slika from novosti where id_novosti=?");
+              $dajSliku->bindValue(1, $idDel);
+              $dajSliku->execute();
+              $slika = $dajSliku->fetch();
+              unlink($slika['slika']);
+              $bris = $baza->prepare("delete from novosti where id_novosti = ?");
+              $bris->bindValue(1, $idDel);
+              $bris->execute();
+          }
+?>
 
+        <ul class="flex-container-posts wrap">
+            <li class="banner"></li>
+            <li class="first-column"></li>
+        </ul>
+        <div class="heading">Iz ponude izdvajamo</div>
+        <select id="filter" onchange="filtrirajProizvode()">
+            <option value="sve">Prikazi sve</option>
+            <option value="danas">Danasnje</option>
+            <option value="sedmica">Sedmicne</option>
+            <option value="mjesec">Mjesecne</option>
+        </select>
+        <ul class="flex-container-posts wrap">
 
-
-
-      
-    <div class="logo">101
-        <div class="logo-text">Tech Shop</div>
-
-    </div>
-
-    <?php
-        if(isset($_SESSION['loginSession'])){
-        
-            echo '<div id="loginInfo">Logovani ste kao '.$_SESSION['loginSession'].'.</div>';
-            
-        }
-        else{
-            echo '<div id="loginInfo">Niste logovani</div>';
-
-        }
-        
-        
-        ?>
-    
-
-
-
-    <ul class="flex-container wrap">
-        <li class="flex-item">
-            <a href="index.php" class="button">Naslovna</a>
-        </li>
-        <li class="flex-item">
-            <a href="katalog.php" class="button">Katalog</a>
-        </li>
-        <li class="flex-item">
-            <a href="kontakt.php" class="button">Kontakt</a>
-        </li>
-        <li class="flex-item">
-            <a href="onama.php" class="button">O nama</a>
-        </li>
-        <?php
-            if(isset($_SESSION['loginSession'])){
-
-                print('
-        <li class="flex-item">
-            <a href="novosti.php" class="button">Dodaj novost</a>
-        </li>
-        <li class="flex-item">
-            <a href="index.php?logoutBtn=true" class="button">Logout</a>
-        </li>');
-            }
-            else{
-                print('<li class="flex-item">
-            <a href="loginPage.php" class="button" name="loginBtn">Login</a>
-        </li>');
-            }
-            
-            
-            
-        ?>
-        
-        
-        <li class="dokraja"></li>
-    </ul>
-
-    <ul class="flex-container-posts wrap">
-        <li class="banner"></li>
-        <li class="first-column"></li>
-    </ul>
-    <div class="heading">Iz ponude izdvajamo</div>
-    <select id="filter" onchange="filtrirajProizvode()">
-						  <option value="sve">Prikazi sve</option>
-						  <option value="danas">Danasnje</option>
-						  <option value="sedmica">Sedmicne</option>
-						  <option value="mjesec">Mjesecne</option>
-						</select>
-
-    <ul class="flex-container-posts wrap">
-
-
-        <?php
-        $file = fopen("data/novostiData.csv", "r");
-
-        $novostiArray = array();
-        while(($csvNovost = fgetcsv($file, 0, ";")) !== false){
-        
-            print '<li class="news">
-            <div class="one" style= "background-image: url('.$csvNovost[2].')"></div>
-            <div id = "naslovNovosti" >'.$csvNovost[0].'</div>
-            <div>'.$csvNovost[1].'</div>
-            <div class="objava">'.$csvNovost[3].'</div>
-            <div class="objavaSpas">'.$csvNovost[3].'</div>
-        </li>';
-
-        }
-            
-            
+            <?php
+          require "baza.php";
+          if(isset($_REQUEST['autor']) and !empty($_REQUEST['autor'])) {
+              $autorShow = $_REQUEST['autor'];
+              require_once 'baza.php';
+              $select = $baza->prepare("select id_novosti, autor, naslov, tekst, UNIX_TIMESTAMP(datum) objava, komentari, slika from novosti where autor = ?");
+              $select->bindValue(1, $autorShow);
+              $select->execute();
+              while($novaNovost = $select->fetch()){
+                  $tekst = implode(' ', array_slice(explode(' ', $novaNovost['tekst']), 0, 30));
+                  $id=$novaNovost['id_novosti'];
+                  print '<li class="news">
+            <div class="one" style= "background-image: url('.$novaNovost['slika'].')"></div>
+            <div id = "naslovNovosti" ><a class="naslovLink" href="detaljiNovosti.php?id='.$id.'">'.$novaNovost['naslov'].'</a></div>
+            <div>'.$tekst.'<a class="naslovLink"  href="detaljiNovosti.php?id='.$id.'">(...)</a></div>
+            <div class="objava">'.date("Y/m/d H:i:s", $novaNovost['objava']).'</div>
+            <div class="objavaSpas">'.date("Y/m/d H:i:s", $novaNovost['objava']).'</div>
+            <br/><br/><div id="infoNovosti" >Novost objavio/la: <a  href="index.php?autor='.$novaNovost['autor'].'" >'.$novaNovost['autor'].'</a></div>';
+                  if(isset($_SESSION['loginSession']) and $_SESSION['loginSession'] == 'admin'){
+                      echo '<br/><br/><div id="infoNovosti" ><a  href="index.php?delete='.$novaNovost['id_novosti'].'" >Obriši novost</a></div>';
+                  }
+                  echo '</li>';
+              }
+          } else{
+              $select = $baza->prepare("select id_novosti, autor, naslov, tekst, UNIX_TIMESTAMP(datum) objava, komentari, slika from novosti");
+              $select->execute();
+              while($novaNovost = $select->fetch()){
+                  $tekst = implode(' ', array_slice(explode(' ', $novaNovost['tekst']), 0, 30));
+                  $id=$novaNovost['id_novosti'];
+                  print '<li class="news">
+            <div class="one" style= "background-image: url('.$novaNovost['slika'].')"></div>
+            <div id = "naslovNovosti" ><a class="naslovLink" href="detaljiNovosti.php?id='.$id.'">'.$novaNovost['naslov'].'</a></div>
+            <div>'.$tekst.'<a class="naslovLink"  href="detaljiNovosti.php?id='.$id.'">(...)</a></div>
+            <div class="objava">'.date("Y/m/d H:i:s", $novaNovost['objava']).'</div>
+            <div class="objavaSpas">'.date("Y/m/d H:i:s", $novaNovost['objava']).'</div>
+            <br/><br/><div id="infoNovosti" >Novost objavio/la: <a  href="index.php?autor='.$novaNovost['autor'].'" >'.$novaNovost['autor'].'</a></div>';
+                  if(isset($_SESSION['loginSession']) and $_SESSION['loginSession'] == 'admin'){
+                      echo '<br/><br/><div id="infoNovosti" ><a  href="index.php?delete='.$novaNovost['id_novosti'].'" >Obriši novost</a></div>';
+                  }
+                  echo '</li>';
+              }
+          }
             ?>
-
-
-
-
-
-        <!--<li class="news">
-            <div class="one" style= 'background-image: url("slike/img1.jpg")' ></div>
-            <div>
-
-            </div>
-            <div class="objava">sdadas</div>
-            <div class="objavaSpas"></div>
-        </li>-->
-
-
-
-       
-
-
-
-
-    </ul>
-
-</body>
-
+        </ul>
+    </body>
 </html>

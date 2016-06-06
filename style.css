@@ -38,6 +38,7 @@
 .wrap    { 
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  
 }
 
 .dokraja
@@ -83,7 +84,7 @@
     display: flex;
     width: 100%;
     margin-left: 8%;
-    
+
     
     
 }
@@ -117,10 +118,11 @@
 {
     margin: inherit;
     width: 417px;
-    height: 240px;
+    min-height: 340px;
+    height:auto;
     margin-left: 10px;
     margin-right: 10px;
-    padding: inherit;
+    padding: 0.6em;
     display: inline-block;
     border: 2px solid #E01A00;
     border-radius: 10px;
@@ -317,12 +319,26 @@ textarea {
     height: auto;
     margin-left: 10px;
     margin-right: 10px;
-    padding: inherit;
     display: inline-block;
     border: 2px solid #E01A00;
     border-radius: 10px;
     flex-wrap: wrap;
     margin-right: 18%;
+    padding: 2%;
+}
+.komentari-wrap{
+    background-color: lightyellow;
+    width: 100%;
+}
+.komentar-forma{
+    width: 100%;
+
+
+}
+
+.odgovori-wrap{
+    background-color:antiquewhite;
+    width: 90%;
 }
 
  
@@ -405,7 +421,7 @@ textarea {
     font-weight: 500;
 }
 
-#naslovNovosti{
+#naslovNovosti, .naslovLink {
     font-size: x-large;
     color: #E01A00;
 }
@@ -415,6 +431,23 @@ textarea {
     color: #E01A00;
     margin-left: 10%;
     margin-top: 3%;
+    
 
 }
 
+#infoNovosti{
+
+    float: left;
+    clear: both;
+    font-weight: 600;
+    color: lightgrey;
+}
+#infoNovosti>a{
+
+    font-weight: 600;
+    color: rgba(224, 26, 0, 0.7);
+}
+
+#komentariForm{
+    all:initial;
+}

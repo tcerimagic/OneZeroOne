@@ -16,9 +16,16 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="autori.php" />
+    <Compile Include="baza.php" />
+    <Compile Include="bodyTag.php" />
+    <Compile Include="detaljiNovosti.php" />
+    <Compile Include="header.php" />
     <Compile Include="loginPage.php" />
     <Compile Include="novosti.php" />
+    <Compile Include="password.php" />
     <Compile Include="scripts\script.js" />
+    <Compile Include="brojNotifikacija.php" />
     <Compile Include="scripts\validacijeScript.js" />
     <Compile Include="slike\facebook.png" />
     <Compile Include="slike\img1.jpg" />

@@ -42,6 +42,26 @@ function validirajFormu() {
     }
 }
 
+function provjeriNove() {
 
+    var novi = document.getElementById("noviPass");
+    var ponovni = document.getElementById("ponovniPass");
+    var labela = document.getElementById("labelaGreske");
+    var btn = document.getElementById("loginBtn");
+    
+
+    if (novi.value !== ponovni.value) {
+
+        labela.innerHTML = "Niste unijeli dva puta isti novi password.";
+        btn.disabled = true;
+
+    } else {
+        labela.innerHTML = "";
+        btn.disabled = false;
+    }
+
+
+
+}
 
 

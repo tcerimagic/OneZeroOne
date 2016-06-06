@@ -20,8 +20,10 @@ else {
     <link rel="stylesheet" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
 </head>
-<body>
+
     <?php
+    require 'bodyTag.php';
+
     date_default_timezone_set("Europe/Sarajevo");
         if(isset($_POST['naslovNovosti']) && isset($_POST['tekstNovosti']) && isset($_FILES['slikaNovosti'])){
             if(!empty($_POST['naslovNovosti']) && !empty($_POST['tekstNovosti']) && !empty($_FILES['slikaNovosti'])){
@@ -69,17 +71,30 @@ else {
                     }
                     else{
                         if (move_uploaded_file($_FILES["slikaNovosti"]["tmp_name"], $image_file)) {
-                                                       
-                            $myfile = fopen("data/novostiData.csv", "a") or die("Unable to open file!");
+
                             $tekstNovosti = str_replace(PHP_EOL, "</br>",  $_POST['tekstNovosti']);
                             $slika = ('slikeNovosti/'.basename($_FILES['slikaNovosti']['name']));
 
-                            $dataToStore = array($_POST['naslovNovosti'], $tekstNovosti, $slika, date_format(new DateTime(), 'Y/m/d H:i:s'));
-                            fputcsv($myfile, $dataToStore, ";");
-                            fclose($myfile);
+                            if(isset($_POST['komentarisanje'])){
+                                $komentari = 'da';
 
-                            print "<div id='obavjestenje1'>Novost objavljena!</div>";
-                            
+                            }else { $komentari = 'ne'; }
+
+                            require 'baza.php';
+
+                            $insert = $baza->prepare("insert into novosti (autor, naslov, tekst, datum, komentari, slika) values (?, ?, ?, ?, ?, ?) ");
+                            if(!$insert->execute(array($_SESSION['loginSession'], $_POST['naslovNovosti'], $tekstNovosti, date_format(new DateTime(), 'Y/m/d H:i:s'), $komentari , $slika))){
+                                echo "Novost nije objavljena.";
+                                //$err = $insert->errorInfo();
+                                //foreach($err as $e){
+                                //    echo $e;
+                                //}
+
+                            }
+                            else {
+                                print "<div id='obavjestenje1'>Novost objavljena!</div>";
+                            }
+
                         }
 
 
@@ -95,60 +110,8 @@ else {
     ?>
 
 
-    <div class="logo">
-        101
-        <div class="logo-text">Tech Shop</div>
-    </div>
+    <?php include 'header.php'; ?>
 
-    <?php
-    if(isset($_SESSION['loginSession'])){
-
-        echo '<div id="loginInfo">Logovani ste kao '.$_SESSION['loginSession'].'.</div>';
-
-    }
-    else{
-        echo '<div id="loginInfo">Niste logovani</div>';
-
-    }
-
-
-    ?>
-
-    <ul class="flex-container wrap">
-        <li class="flex-item">
-            <a href="index.php" class="button">Naslovna</a>
-        </li>
-        <li class="flex-item">
-            <a href="katalog.php" class="button">Katalog</a>
-        </li>
-        <li class="flex-item">
-            <a href="kontakt.php" class="button">Kontakt</a>
-        </li>
-        <li class="flex-item">
-            <a href="onama.php" class="button">O nama</a>
-        </li>
-        <?php
-        if(isset($_SESSION['loginSession'])){
-
-            print('
-        <li class="flex-item">
-            <a href="novosti.php" class="button">Dodaj novost</a>
-        </li>
-        <li class="flex-item">
-            <a href="index.php?logoutBtn=true" class="button">Logout</a>
-        </li>');
-        }
-        else{
-            print('<li class="flex-item">
-            <a href="loginPage.php" class="button" name="loginBtn">Login</a>
-        </li>');
-        }
-
-
-
-        ?>
-        <li class="dokraja"></li>
-    </ul>
     <h1 class="center">Forma za unos novosti</h1>
    
 
@@ -168,6 +131,9 @@ else {
         <input placeholder="Pozivni" type="text" id="pozivni" name="pozivni" onblur="provjeriKod()" required />
         <input placeholder="Broj telefona" type="text" id="telefon" name="telefon" required />
         <label id="labelaGreske" name="labelaGreske"></label>
+
+        <label for="slikaNovosti">Dodaj sliku:</label>
+        <input type="checkbox" id="komentarisanje" name="komentarisanje" checked />Dozvoljeni komentari
 
 
 
