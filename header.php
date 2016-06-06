@@ -67,5 +67,5 @@
         }
 
         ?>
-    <li class="dokraja"></li>
+    <!--<li class="dokraja"></li>-->
 </ul>
