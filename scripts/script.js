@@ -1,6 +1,11 @@
 window.onload = function() {
   //  dummyPodaci();
 
+    obaviSve();
+}
+
+function obaviSve()
+{
     var objave = document.getElementsByClassName("objava");
 
     for (var i = 0; i < objave.length; i++) {
@@ -9,8 +14,6 @@ window.onload = function() {
         objave[i].innerHTML = "Novost objavljena " + postaviVrijemeObjave(ocitajDatum);
     };
 }
-
-
 Date.prototype.skiniSekunde = function(s) {
     this.setSeconds(this.getSeconds() - s);
     return this;
